@@ -2,7 +2,6 @@
 #include <math.h>
 #include <vector>
 #include <limits>
-#include <initializer_list>
 #include <fstream>
 #include <sstream>
 using namespace std;
@@ -121,7 +120,7 @@ class NeuralNetwork : private Data
                 // Calculate the loss
                 float loss = meanSquaredError(target[i], y_predicted, total_samples);
 
-                //cout << "Delta: " << target[i]-y_predicted << endl;
+                // cout << "Delta: " << target[i]-y_predicted << endl;
 
                 // Compare the present loss with the previous
                 // If less than the previous then try to further optimize
@@ -153,17 +152,11 @@ public:
     }
 
     // Returns the predicted value on providing the necessary info
-    float predict(initializer_list<float> feature)
+    float predict(int size, vector<float> features)
     {
         float y_predicted = 0;
-        vector<float> features;
-        for (auto f : feature)
-        {
-            features.push_back(f);
-        }
         for (int i = 0; i < weights.size(); i++)
         {
-
             y_predicted += (weights[i] * features[i]);
         }
         y_predicted += this->bias;
@@ -172,19 +165,18 @@ public:
 
     void score()
     {
-        cout << "Printing score..." << endl;
-        int ctr = 0;
+        float ctr = 0;
         for (int i = 0; i < target.size(); i++)
-        {   //cout << "Score iteration: " << i << endl;
-            float predicted_value = predict({features[i][0], features[i][1], features[i][2], features[i][3], features[i][4]});
+        { 
+            float predicted_value = predict(features[0].size(), features[i]);
             float difference = target[i];
-            if ((predicted_value > (target[i] - difference)) && (predicted_value < (target[i] + difference)))
+            float ul = target[i] + difference;
+            float ll = target[i] - difference;
+            if ((predicted_value > ll) && (predicted_value < ul))
             {
-                //cout << "incrementing ctr" << endl;
                 ctr++;
             }
         }
-        cout << "Calculating score..." << endl;
         float score = ctr / target.size();
         cout << "Score: " << score << endl
              << ctr << endl;
