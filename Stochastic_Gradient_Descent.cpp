@@ -4,6 +4,7 @@
 #include <limits>
 #include <fstream>
 #include <sstream>
+#include <imgui.h>
 using namespace std;
 
 class Data
@@ -136,6 +137,12 @@ public:
 
         cout<<"Score: "<<ctr/target.size()<<endl;
     }
+};
+
+class GUI
+{
+    // GUI Code here
+    
 };
 
 int main()
