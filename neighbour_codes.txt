@@ -1,0 +1,76 @@
+1 : Airoli 
+2 : Ambarnath 
+3 : Andheri 
+4 : Badlapur 
+5 : Bandra Kurla Complex 
+6 : Belapur 
+7 : Bhandup West 
+8 : Bhayandar East 
+9 : Bhiwandi 
+10 : Boisar 
+11 : Borivali 
+12 : CBD Belapur 
+13 : Chembur 
+14 : Churchgate 
+15 : Dadar 
+16 : Dahisar 
+17 : Dattapada 
+18 : Dombivali 
+19 : Dronagiri 
+20 : Ghansoli 
+21 : Ghatkopar 
+22 : Goregaon 
+23 : Greater Khanda 
+24 : Hiranandani Estates 
+25 : Jawahar Nagar 
+26 : Jeejamata Nagar 
+27 : Jogeshwari 
+28 : Juhu 
+29 : Kalamboli 
+30 : Kalwa 
+31 : Kalyan 
+32 : Kamothe 
+33 : kandivali 
+34 : Kanjurmarg 
+35 : Karanjade 
+36 : Karjat 
+37 : Khar 
+38 : Kharghar 
+39 : kolshet 
+40 : Koper Khairane 
+41 : Koproli 
+42 : Kurla 
+43 : Lower Parel 
+44 : Magathane 
+45 : Malad 
+46 : Matunga 
+47 : Mira Road 
+48 : Mulund 
+49 : Naigaon East 
+50 : Nala Sopara 
+51 : Napeansea Road 
+52 : Nerul 
+53 : Palghar 
+54 : Palm Beach 
+55 : Panvel 
+56 : Parel 
+57 : Powai 
+58 : Prabhadevi 
+59 : Sanpada 
+60 : Santacruz  
+61 : Seawoods 
+62 : Sector 6 
+63 : Shil Phata 
+64 : Sion 
+65 : Taloja 
+66 : Thane 
+67 : Titwala 
+68 : Ulwe 
+69 : Uran 
+70 : Vasai 
+71 : Vashi 
+72 : Vikhroli 
+73 : Vile Parle 
+74 : Virar 
+75 : Wadala 
+76 : Worli 
