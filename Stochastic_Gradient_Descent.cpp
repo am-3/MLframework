@@ -13,7 +13,7 @@ class Data
     void readCSV()
     {
         fstream fin;
-        fin.open("E:\\VS Code Programs\\OOP_Assignments\\train.csv", ios::in);
+        fin.open("C:\\Users\\Virendra\\Dropbox\\My PC (LAPTOP-BOJFARUA)\\Documents\\GitHub\\MLframework\\train_dataset.csv", ios::in);
 
         vector<float> temp_vec;
         string word, line;
@@ -86,11 +86,11 @@ class NeuralNetwork : private Data
         this->bias_gradient = 0;
         weight_gradients.clear();
 
-        this->bias_gradient += (-2 * (target[row] - y_predicted));
+        this->bias_gradient += ((-2 * (target[row] - y_predicted))/target.size());
 
         for (int col = 0; col < features[0].size(); col++)
         {
-            weight_gradients[col] += (-2 * ((target[row] - y_predicted) * features[row][col]));
+            weight_gradients[col] += ((-2 * ((target[row] - y_predicted) * features[row][col]))/target.size());
         }
     }
 
@@ -169,7 +169,7 @@ public:
         for (int i = 0; i < target.size(); i++)
         { 
             float predicted_value = predict(features[0].size(), features[i]);
-            float difference = target[i];
+            float difference = target[i]*0.75;
             float ul = target[i] + difference;
             float ll = target[i] - difference;
             if ((predicted_value > ll) && (predicted_value < ul))
@@ -195,7 +195,7 @@ public:
 int main()
 {
     NeuralNetwork nn;
-    nn.fit(0.001, 100);
+    nn.fit(0.0001, 100);
     nn.score();
     nn.showWeightsAndBias();
     return 0;
