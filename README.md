@@ -16,3 +16,5 @@ Here, m is called weight as every feature does have some weightage to the predic
 Training the model:- To train the model Stochastic Gradient Descent algorithm is applied. In this one datapoint is taken at a time for training. Appropriate weights are multiplied with the features and added up alog with bias. This gives the predicted value. The loss is calculated and to reduce the loss, first the gradient of the loss is obtained which is the derivate of the loss function with respect to the weights and bias and these gradients are multiplied with the learning rate (how fast the model should learn) and subtracted from the corresponding weights and bias.
 
 Gradient Overshooting:- While training the gradient may or may not overshoot i.e. take a much larger value than expected. So to avoid that we use gradient clipping to make the gradient remain within a range of values.
+
+Testing the model:- For testing the model, the user enters the feature values which are then multiplied with their corresponding weights and added up along with the bias. This gives the predicted value.
