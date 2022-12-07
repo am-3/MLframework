@@ -4,6 +4,7 @@
 #include <limits>
 #include <fstream>
 #include <sstream>
+#include <imgui.h>
 using namespace std;
 
 class Data
@@ -190,6 +191,12 @@ public:
         }
         cout << "bias: " << this->bias;
     }
+};
+
+class GUI
+{
+    // GUI Code here
+    
 };
 
 int main()
