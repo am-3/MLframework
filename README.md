@@ -5,6 +5,7 @@ Contributors: Atharva More & Virendra Panchal
 Project for OOPs Lab
 
 Methodoly:
+
 Inputs: CSV file with n columns; of which n-1 are features and the nth column is target.
 
 Linear Regression model is created that predicts the house price of user given features.
