@@ -46,10 +46,10 @@ class Data
         }
     }
 
-    friend class NeuralNetwork;
+    friend class LinearRegression;
 };
 
-class NeuralNetwork : private Data
+class LinearRegression : private Data
 {
     float bias, bias_gradient;
     vector<float> weights, weight_gradients;
@@ -140,7 +140,7 @@ class NeuralNetwork : private Data
     }
 
 public:
-    NeuralNetwork()
+    LinearRegression()
     {
         this->bias = 0;
         readCSV();
@@ -194,7 +194,7 @@ public:
 
 int main()
 {
-    NeuralNetwork nn;
+    LinearRegression nn;
     nn.fit(0.0001, 100);
     nn.score();
     nn.showWeightsAndBias();
