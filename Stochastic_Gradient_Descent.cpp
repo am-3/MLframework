@@ -8,6 +8,7 @@ using namespace std;
 
 class Data
 {
+    vector<string> feature_names;
     vector<vector<float>> features;
     vector<float> target;
     void readCSV()
@@ -21,15 +22,20 @@ class Data
 
         while (fin >> line)
         {
-            if (ctr == 0)
-            {
-                ctr++;
-                continue;
-            }
 
             temp_vec.clear();
 
             stringstream s(line);
+
+            if (ctr == 0)
+            {
+                while (getline(s, word, ','))
+                {
+                    feature_names.push_back(word);
+                }
+                ctr++;
+                continue;
+            }
 
             while (getline(s, word, ','))
             {
@@ -86,11 +92,11 @@ class LinearRegression : private Data
         this->bias_gradient = 0;
         weight_gradients.clear();
 
-        this->bias_gradient += ((-2 * (target[row] - y_predicted))/target.size());
+        this->bias_gradient += ((-2 * (target[row] - y_predicted)) / target.size());
 
         for (int col = 0; col < features[0].size(); col++)
         {
-            weight_gradients[col] += ((-2 * ((target[row] - y_predicted) * features[row][col]))/target.size());
+            weight_gradients[col] += ((-2 * ((target[row] - y_predicted) * features[row][col])) / target.size());
         }
     }
 
@@ -139,6 +145,17 @@ class LinearRegression : private Data
         }
     }
 
+    float predict(int size, vector<float> features)
+    {
+        float y_predicted = 0;
+        for (int i = 0; i < weights.size(); i++)
+        {
+            y_predicted += (weights[i] * features[i]);
+        }
+        y_predicted += this->bias;
+        return y_predicted;
+    }
+
 public:
     LinearRegression()
     {
@@ -152,24 +169,24 @@ public:
     }
 
     // Returns the predicted value on providing the necessary info
-    float predict(int size, vector<float> features)
+    float predict()
     {
-        float y_predicted = 0;
-        for (int i = 0; i < weights.size(); i++)
+        vector<float> user_features(features[0].size());
+        for (int i = 0; i < features[0].size(); i++)
         {
-            y_predicted += (weights[i] * features[i]);
+            cout << "Enter the " << feature_names[i] << ": ";
+            cin >> user_features[i];
         }
-        y_predicted += this->bias;
-        return y_predicted;
+        cout<<"Predicted Value: "<<predict(user_features.size(), user_features)<<endl;
     }
 
     void score()
     {
         float ctr = 0;
         for (int i = 0; i < target.size(); i++)
-        { 
+        {
             float predicted_value = predict(features[0].size(), features[i]);
-            float difference = target[i]*0.75;
+            float difference = target[i] * 0.75;
             float ul = target[i] + difference;
             float ll = target[i] - difference;
             if ((predicted_value > ll) && (predicted_value < ul))
@@ -197,6 +214,7 @@ int main()
     LinearRegression nn;
     nn.fit(0.0001, 100);
     nn.score();
+    nn.predict();
     nn.showWeightsAndBias();
     return 0;
 }
