@@ -14,7 +14,7 @@ class Data
     void readCSV()
     {
         fstream fin;
-        fin.open("C:\\Users\\Virendra\\Dropbox\\My PC (LAPTOP-BOJFARUA)\\Documents\\GitHub\\MLframework\\train_dataset.csv", ios::in);
+        fin.open(".\\train_dataset2.csv", ios::in);
 
         vector<float> temp_vec;
         string word, line;
@@ -177,7 +177,10 @@ public:
             cout << "Enter the " << feature_names[i] << ": ";
             cin >> user_features[i];
         }
-        cout<<"Predicted Value: "<<predict(user_features.size(), user_features)<<endl;
+        float result = predict(user_features.size(), user_features);
+        cout << "Predicted Value: " << result << endl;
+
+        return result;
     }
 
     void score()
