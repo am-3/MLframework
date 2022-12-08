@@ -143,6 +143,8 @@ class LinearRegression : private Data
             cout << "Epoch: " << e << "\t"
                  << "Loss: " << current_loss << endl;
         }
+        cout << "Training complete" << endl;
+        cout << "=============================================================" << endl << endl;
     }
 
     float predict(int size, vector<float> features)
@@ -174,11 +176,11 @@ public:
         vector<float> user_features(features[0].size());
         for (int i = 0; i < features[0].size(); i++)
         {
-            cout << "Enter the " << feature_names[i] << ": ";
+            cout << "Enter " << feature_names[i] << ": ";
             cin >> user_features[i];
         }
         float result = predict(user_features.size(), user_features);
-        cout << "Predicted Value: " << result << endl;
+        cout << "Predicted Value: " << result << endl << endl;
 
         return result;
     }
@@ -199,25 +201,34 @@ public:
         }
         float score = ctr / target.size();
         cout << "Score: " << score << endl
-             << ctr << endl;
+             << "Matching records: " << ctr << endl << endl;
     }
 
     void showWeightsAndBias()
     {
         for (int i = 0; i < weights.size(); i++)
         {
-            cout << "weight " << i + 1 << ": " << weights[i] << endl;
+            cout << "Weight " << i + 1 << ": " << weights[i] << endl;
         }
-        cout << "bias: " << this->bias;
+        cout << "Bias: " << this->bias;
     }
 };
 
 int main()
 {
     LinearRegression nn;
-    nn.fit(0.0001, 100);
+    float learning_rate = 0.0001;
+    int epoch = 100;
+
+    nn.fit(learning_rate, epoch);
+
+    cout << "Displaying Model Performance: " << endl;
     nn.score();
+
+    cout<< "Computing a prediction for input data: " << endl;
     nn.predict();
+
+    cout << "Showing current weights and bias(s) of the model: " << endl;
     nn.showWeightsAndBias();
     return 0;
 }
