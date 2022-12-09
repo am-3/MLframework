@@ -3,6 +3,7 @@
 #include <vector>
 #include <limits>
 #include <fstream>
+#include <ios>
 #include <sstream>
 using namespace std;
 
@@ -180,7 +181,7 @@ public:
             cin >> user_features[i];
         }
         float result = predict(user_features.size(), user_features);
-        cout << "Predicted Value: " << result << endl << endl;
+        cout << "Predicted Value: " << fixed <<result << endl << endl;
 
         return result;
     }
